@@ -4,58 +4,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animasi</title>
+  <title>orang</title>
   
-  <link href="css/bootstrap.css" rel="Stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
   
   <style>
-  #stage {
-    background-image: url("background.jpg");
-    min-height: 255px;
-    background-position-x: 10px;
-  }
-  .panah{
-    margin: 2em;
-}
+    #stage {
+      background-image: url("background.jpg");
+      min-height: 250px;
+      background-position-x: 16px;
+    }
+    .panah {
+      margin: 2em
+    }
   </style>
   
   <script src="js/jquery.js"></script>
-<head>
+</head>
 
 <body>
-  <h1>niadalfa</h1>
- <div id="stage" class="d-flex justify-content-center align-items-end">
-    <div id="sprite">
-    <img id="objek"src="gambar/kanan1.png" style="width: 150px;">
-    </div>
+   <div id="stage" class="d-flex justify-content-center align-items-end">
+     <div id="sprite" >
+       <img id="objek" src="gambar/kanan1.png" style="width: 200px;">
+     </div>
    </div>
-  
+    <h1>Nama :Nia fauziah</h1>
+ <h1>kelas :Xl</h1
  <div class="d-flex justify-content-center">
-   <div class="panah btn btn-outline-primary" id="panah-kiri">&lArr;</div>
-   <div class="panah btn btn-outline-primary" id="panah-kanan">&rArr;</div>
-</div>
-
-<script>
- var langkahkanan = 1;
- var langkahkiri = 1;
- var jumlahlangkah = 5;
- var posisibackground = 10;
+   <div class="panah btn btn-outline-primary" id="panah-kiri"
+    >Red more</div>
+ </div>
  
-$(document).ready(function(){
-  $("#panah-kanan").click(function(){
-    langkahkanan++;
-    posisibackground = posisibackground - 8;
-    
-    if (langkahkanan == jumlahlangkah) {
-      langkahkanan = 1;
-    }
-    
-  $("#objek").attr('src','gambar/kanan' +langkahkanan + '.png');
-  $("#stage").css('background-position-x',posisibackground);
+ <script>
+   var langkahkanan = 1;
+   var langkahkiri = 1;
+   var jumlahlangkah = 4;
+   var posisibackground = 10;
+   
+   var interval;
+   
+   $(document).ready(function () {
+     $("#panah-kanan").on("touchstart", function () {
+      interval = setInterval( () => {
+        langkahkanan++;
+        posisibackground = posisibackground - 8;
+        if (langkahkanan == jumlahlangkah) {
+          langkahkanan = 1;
+        }
+        $("#objek").attr("src", "gambar/kanan" + langkahkanan + ".png");
+        $("#stage").css("background-position-x", posisibackground);
+      }, 100 )
+     })
+     
+    $("#panah-kanan").on("touchend", function () {
+     clearInterval(interval);
+    })  
   
-  })
-})
-</script>
+    $("#panah-kiri").on("touchstart", function () {
+      interval = setInterval( () => {
+        langkahkiri++;
+       posisibackground = posisibackground + 8;
+       if (langkahkiri == jumlahlangkah) {
+         langkahkiri = 1;
+       }
+       $("#objek").attr("src", "gambar/kiri" + langkahkiri + ".png");
+       $("#stage").css("background-position-x", posisibackground);
+      }, 100 )
+    })
+  
+    $("#panah-kiri").on("touchend", function () {
+      clearInterval(interval);
+    })
+  
+     $("#panah-kanan").click(function () {
+       langkahkanan++;
+       posisibackground = posisibackground - 8;
+       if (langkahkanan == jumlahlangkah) {
+         langkahkanan = 1;
+       }
+       $("#objek").attr("src", "gambar/kanan" + langkahkanan + ".png");
+       $("#stage").css("background-position-x", posisibackground);
+     })
+     
+     $("#panah-kiri").click(function () {
+       langkahkiri++;
+       posisibackground = posisibackground + 8;
+       if (langkahkiri == jumlahlangkah) {
+         langkahkiri = 1;
+       }
+       $("#objek").attr("src", "gambar/kiri" + langkahkiri + ".png");
+       $("#stage").css("background-position-x", posisibackground);
+     })
+   })
+ </script>
 </body>
-
 </html>
